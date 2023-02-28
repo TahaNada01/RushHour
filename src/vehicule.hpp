@@ -2,7 +2,7 @@
 #define LIFAP6_VEHICULE_HPP
 
 
-class Vehicule {
+class Vehicule { // test
     public:
     /* constructeur , destructeur*/
     Vehicule();
