@@ -1,31 +1,27 @@
 #ifndef LIFAP6_VEHICULE_HPP
 #define LIFAP6_VEHICULE_HPP
 
+#include <string>
 
-class Vehicule { // test
-    public:
-    /* constructeur , destructeur*/
-    Vehicule();
-    ~Vehicule();
-     
-    /*Positioner les véhicule dans la grille*/
-    void position(int ligne,int colonne,int longueur,);
-
-    /*Définir la longueur de la case*/
-    int longueur;
-
-    /*déterminer la direction du véhicule horizontal (1) ou vertical (0)*/
-
-    enum direction {
-        horizantal = 1,
-        verticale = 0
-    };
-
-
-
-     
+class Vehicule {
 
     private:
+     int ligne;
+     int colonne;
+     int longueur;
+     bool direction;
+
+    public:
+      //constructeur ,destructeur
+       Vehicule(int ligne,int colonne,int longueur,bool direction);
+       //~Vehicule();
+
+     //Getters
+       int getLigne() const;
+       int getColonne() const;
+       int getLongueur() const;
+       bool Horizantale() const;
 
 };
 #endif
+
