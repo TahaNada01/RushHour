@@ -16,6 +16,8 @@ Grille::Grille(const std::string& filename) {
     int sor_lignes, sor_colonnes;
     fichier >> sor_lignes >> sor_colonnes;
     m_sortie = {sor_lignes, sor_colonnes};
+    cout << "The pair p2 is: ( " << m_sortie.first << " " << m_sortie.second << " )." << endl;
+    
     // std::cout<<sor_lignes<< std ::endl;
     // std::cout<<sor_colonnes<< std ::endl;
     
