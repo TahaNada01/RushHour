@@ -28,3 +28,4 @@ int Vehicule::getLongueur() const{
 bool Vehicule::Horizantale() const{
     return direction;
 }
+
