@@ -7,7 +7,7 @@
 
 int main(){
     
-    Grille grille("rush-hour-etu/Sujet/puzzle.txt");
+    Grille grille("../Sujet/puzzle.txt");
     grille.print(); // Affiche la grille
     return 0;
 
