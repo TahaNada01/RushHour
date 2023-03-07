@@ -21,8 +21,8 @@ class Grille {
       Les caractères sont utilisés pour représenter les cases de la grille et les véhicules.
       Par exemple, le caractère '.' peut représenter une case vide, 'H' peut représenter un véhicule horizontal et 'V' peut représenter un véhicule vertical.
       */
-      std::vector<std::vector<char>> m_grille;// Grille sous forme d'un vecteur de vecteurs de caractères.
-      std::vector<std::vector<int>> m_vehicles;// Vecteur des véhicules sous forme de vecteurs d'entiers.
+      std::vector<std::vector<char> > m_grille;// Grille sous forme d'un vecteur de vecteurs de caractères.
+      std::vector<std::vector<int> > m_vehicles;// Vecteur des véhicules sous forme de vecteurs d'entiers.
       std::pair<int, int> m_sortie;// Coordonnées de la sortie de la grille sous forme d'une paire d'entiers.
 
 
@@ -43,7 +43,7 @@ class Grille {
       std::pair<int, int> getSortie() const;
 
       // Fonction pour obtenir les informations sur les véhicules de la grille.
-      std::vector<std::vector<int>> getVehicles() const;
+      std::vector<std::vector<int> > getVehicles() const;
 
       // Fonction pour obtenir les grilles voisines de la grille courante.
       std::vector<Grille> getNeighbors() const;
