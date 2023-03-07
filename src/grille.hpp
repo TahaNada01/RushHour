@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 
-
 /*
   Le fichier Grille va gérer la grille de jeu, qui est représentée par une matrice de caractères (m_grille). Cette grille contient les informations sur l'emplacement de tous les véhicules ainsi que la sortie .
 
