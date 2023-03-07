@@ -2,7 +2,7 @@
 #include "vehicule.hpp"
 #include <fstream>
 #include <iostream>
-
+using namespace std;
 Grille::Grille(const std::string& filename) {
     // Ouverture du fichier en lecture
     std::ifstream fichier(filename);
@@ -13,39 +13,67 @@ Grille::Grille(const std::string& filename) {
     }
     
     // Lecture de la taille de la grille
-    int nb_lignes, nb_colonnes;
-    fichier >> nb_lignes >> nb_colonnes;
+    int sor_lignes, sor_colonnes;
+    fichier >> sor_lignes >> sor_colonnes;
+    m_sortie = {sor_lignes, sor_colonnes};
+    // std::cout<<sor_lignes<< std ::endl;
+    // std::cout<<sor_colonnes<< std ::endl;
     
     // Initialisation de la grille avec des points
-    m_grille.resize(nb_lignes, std::vector<char>(nb_colonnes, '.'));
+    m_grille.resize(6, std::vector<char>(6, '.'));
+    // std::cout<<sor_colonnes<< std ::endl;
+    // std::cout<<sor_colonnes<< std ::endl;
 
-    // Lecture et ajout des véhicules à la grille
-    int nb_vehicules;
-    fichier >> nb_vehicules;
-    for (int i = 0; i < nb_vehicules; i++) {
+    // // Lecture et ajout des véhicules à la grille
+    int nb_vehicules = 13;
+    int i=0;
+    // std::cout << nb_vehicules << std::endl;
+    while(true){
         int ligne, colonne, longueur;
         bool direction;
         fichier >> ligne >> colonne >> longueur >> direction;
-        Vehicule vehicule(ligne, colonne, longueur, direction);
-        if (direction) {
-            // Si la direction est horizontale, on ajoute le véhicule de gauche à droite
-            for (int j = colonne; j < colonne + longueur; j++) {
-                m_grille[ligne][j] = 'H';
-            }
-        } else {
-            // Si la direction est verticale, on ajoute le véhicule de haut en bas
-            for (int j = ligne; j < ligne + longueur; j++) {
-                m_grille[j][colonne] = 'V';
-            }
+    
+        if(fichier.fail()) {
+            break ;
         }
-        // Ajout du véhicule à la liste des véhicules de la grille
-        m_vehicles.push_back({ligne, colonne, longueur, (int)direction});
+        // cout << i << endl;
+        // cout<< ligne << endl;
+        // cout<< colonne << endl;
+        // cout<< longueur << endl;
+        // cout<< direction << endl;
+        // cout << endl;
+        Vehicule v1(ligne, colonne, longueur, direction);
+        m_vehicles.push_back({ligne, colonne, longueur, (int)direction});          
+        // cout << v1.getLigne() << endl;
+        // cout << v1.getColonne() << endl;
+        i++;
+        
     }
 
-    // Lecture de la position de la sortie
-    int sortie_x, sortie_y;
-    fichier >> sortie_x >> sortie_y;
-    m_sortie = {sortie_x, sortie_y};
+    // for (int i = 0; i < nb_vehicules; i++) {
+    //     int ligne, colonne, longueur;
+    //     bool direction;
+    //     fichier >> ligne >> colonne >> longueur >> direction;
+    //     Vehicule vehicule(ligne, colonne, longueur, direction);
+    //     if (direction) {
+    //         // Si la direction est horizontale, on ajoute le véhicule de gauche à droite
+    //         for (int j = colonne; j < colonne + longueur; j++) {
+    //             m_grille[ligne][j] = 'H';
+    //         }
+    //     } else {
+    //         // Si la direction est verticale, on ajoute le véhicule de haut en bas
+    //         for (int j = ligne; j < ligne + longueur; j++) {
+    //             m_grille[j][colonne] = 'V';
+    //         }
+    //     }
+    //     // Ajout du véhicule à la liste des véhicules de la grille
+    //     m_vehicles.push_back({ligne, colonne, longueur, (int)direction});
+    // }
+
+    // // Lecture de la position de la sortie
+    // int sortie_x, sortie_y;
+    // fichier >> sortie_x >> sortie_y;
+    // m_sortie = {sortie_x, sortie_y};
 
     // Fermeture du fichier
     fichier.close();
