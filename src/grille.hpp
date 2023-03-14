@@ -47,6 +47,9 @@ class Grille {
       // Fonction pour obtenir les grilles voisines de la grille courante.
       std::vector<Grille> getNeighbors() const;
 
+      //Fonction pour obtenir des information sur le véhicule qui doit sortir
+      std::pair<int, int> getVehicleBleu() const;
+
 
 
 
