@@ -42,7 +42,7 @@ Grille::Grille(const std::string& filename) {
         // cout << endl;
         Vehicule v1(ligne, colonne, longueur, direction);
         m_vehicles.push_back({ligne, colonne, longueur, (int)direction});
-        std::cout << std::endl;         
+        //std::cout << std::endl;         
         // cout << v1.getLigne() << endl;
         // cout << v1.getColonne() << endl;
         i++;
@@ -62,6 +62,61 @@ void Grille::print() const
         std::cout << std::endl;
     }
 }
+
+/*
+  auto : permet au compilateur de déterminer automatiquement
+  le type de la variable 'vehicle' ici c'est de type std::vector<int>
+  & est utilisé pour déclarer une référence à un objet existant
+  const :  l'objet pointé ne peut pas être modifié par cette référence.
+*/
+std::pair<int, int> Grille::getVehicleBleu() const {
+    for (int i = 0; i < m_vehicles.size(); ++i) {
+        //Récupérer une référence constante vers l'élément i du vecteur m_vehicles, ce qui permet ensuite d'accéder aux valeurs de cet élément en utilisant la variable vehicle.
+        const auto& vehicle = m_vehicles[i];
+        if (vehicle[2] == 1 && vehicle[3] == 2) {
+            // Le véhicule est horizontal et a une longueur de 2.
+            std::cout << "Position du véhicule bleu : (" << vehicle[0] << ", " << vehicle[1] << ")" << std::endl;
+            return {vehicle[0], vehicle[1]};
+        }
+    }
+    // Si le véhicule rouge n'a pas été trouvé, on retourne un pair (-1, -1).
+    return {-1, -1};
+}
+
+std::vector<Grille> Grille::getNeighbors() const{
+    std::vector<Grille> voisins;
+
+    for(int i=0;i< m_vehicles.size();++i){
+        const auto& vehicle = m_vehicles[i];
+        /*int ligne = vehicle[0];
+        int colonne = vehicle[1];
+        int longueur = vehicle[2];
+        bool direction = vehicle[3];*/
+
+        //création de la nouvelle grille
+        Grille voisins (*this);
+        
+        //deplacer le véhicule horizantalement a gauche ou à droite 
+        if(Horizantale == 0){
+            if(colonne > 0 && voisins.m_grille[ligne][colonne - 1] = '.'){
+
+            }
+            if(colonne > 0 && voisins.m_grille[ligne][colonne + 1] = '.'){
+
+            }
+
+        }
+
+    }
+
+    
+
+    
+
+
+
+};
+
 
 char Grille::get(int x,int y) const {
     return m_grille[x][y];
